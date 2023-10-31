@@ -1,7 +1,11 @@
-@extends('layout.master')
+@extends('layouts.master')
+
+@section('title')
+<h6 class="m-0 font-weight-bold text-primary">Data Penerima</h6>
+@endsection
+
 @section('content')
 <div class="container">
-    <h4>Data Penerima</h4>
     <p align="right">
         <a href="{{ route('data_peminjam.create') }}" class="btn btn-primary">Tambah Data Penerima Barang</a>
     </p>

@@ -13,28 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('layouts.master');
+});
 
-Route::get('home', function(){
+Route::get('home', function () {
     return view('home');
 });
 
-Route::get('data_peminjam', function(){
+Route::get('data_peminjam', function () {
     return view('peminjam/data_peminjam');
 });
 
 Route::get('lihat_data_peminjam', 'App\Http\Controllers\PeminjamController@lihat_data_peminjam');
 
-Route::group(array('prefix' => 'admin'), function(){
+Route::group(array('prefix' => 'admin'), function () {
     //url ke halaman home
-    Route::get('/', function(){
+    Route::get('/', function () {
         return 'Halaman Home Admin';
     });
     //Route ke halaman input data buku
-    Route::get('post', function(){
+    Route::get('post', function () {
         return "Halaman Input data Buku";
     });
-     //Route ke halaan input data buku
-     Route::get('post/simpan', function(){
+    //Route ke halaan input data buku
+    Route::get('post/simpan', function () {
         return "Data berhasil disimpan";
     });
 });
