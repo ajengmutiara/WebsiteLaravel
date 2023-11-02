@@ -1,22 +1,26 @@
 @extends('layouts.master')
-@section('title')
-<h6 class="m-0 font-weight-bold text-primary">Data Pegawai Penerima Barang</h6>
-@endsection
-
 @section('content')
+@if(count($data_peminjam))
+<h4>Data Peminjam</h4>
+
 @include('_partial/flash_message')
-<div class="card-body">
-    <p align="right">
-        <p align="left"><a href="{{route('data_peminjam.data_peminjam_pdf')}}" class="btn btn-primary">Download Data Pegawai</a></p>
-        <p align="left"><a href="{{route('data_peminjam.data_peminjam_pdf2')}}" class="btn btn-primary">Download Surat Berita Acara Pegawai</a></p>
-        <a href="{{ route('data_peminjam.create') }}" class="btn btn-primary">Tambah Data Penerima Barang</a>
-        <form action="{{ route('data_peminjam.create')}}" method="get">@csrf
-            <input type="text" name="kata" placeholder="cari...">
-        </form>
-    </p>
-    <table class="table data-tables">
-        <thead>
-            <tr>
+
+<p align="right">
+    <a href="{{ route('data_peminjam.create') }}" class="btn btn-primary">Tambah Data Peminjam</a>
+</p>
+
+<form method="get" action="{{ route('data_peminjam.search') }}">
+    @csrf
+    <div class="row align-items-center mb-3">
+        <div class="col-4">
+            <input type="text" id="kata" class="form-control" name="kata" placeholder="Cari...">
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
                 <th>No</th>
                 <th>Nama Pegawai</th>
                 <th>NIP</th>
@@ -64,4 +68,10 @@
         <p>{{ $data_peminjam->links()}}</p>
     </div>
 </div>
+@else
+<div>
+        <h4>Data {{ $cari }} tidak ditemukan</h4>
+        <a href="/data_peminjam">Kembali</a>
+    </div>
+@endif
 @endsection

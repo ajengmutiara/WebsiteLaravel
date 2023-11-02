@@ -1,9 +1,10 @@
-@extends('layout.master')
+@extends('layouts.master')
+@section('title')
+<h6 class="m-0 font-weight-bold text-primary">Edit Data Pegawai Penerima Barang</h6>
+@endsection
 @section('content')
 <div class="container">
-    <h4>Edit Data Penerima</h4>
-
-    <form method="POST" action="{{ route('data_peminjam.update', $peminjam->id) }}">
+    <form method="post" action="{{ route('data_peminjam.update', $peminjam->id) }}">
         @csrf 
         <div class="form-group">
             <label>Nama Pegawai</label>
@@ -19,12 +20,12 @@
         </div>
         <div class="form-group">
     <label>Type Barang</label><br>
-    <select name="type_barang">
-        <option value=>Basic</option>
-        <option value=>Premium</option>
-        <option value=>Medium</option>
-        <option value=>Exclusive</option>
-    </select>
+    <select name="type_barang" id="type_barang">
+            <option value="Basic">Basic</option>
+            <option value="Premium">Premium</option>
+            <option value="Medium">Medium</option>
+            <option value="Exclusive">Exclusive</option>
+        </select>
     </div>
     <div class="form-group">
             <label>Jenis Barang</label>
@@ -44,11 +45,14 @@
         </div>
         <div class="form-group">
             <label>Kelengkapan Barang</label>
-            <textarea name="kelengkapan_barang" id="" cols="148" rows="3"></textarea>
+            <textarea name="kelengkapan_barang" id="" cols="125" rows="3"></textarea>
         </div>
         <div class="form-group">
             <label> Tanggal Penerimaan</label>
             <input type="date" name="tanggal_penerimaan" class="form-control">
+            <div>
+        <button type="submit">Simpan</button>
+        </div>
 </div>
 </form>
 </div>
